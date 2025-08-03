@@ -1,0 +1,36 @@
+
+<div class="home-container">
+  <header class="home-header">
+    <h1>{{componentTitle}}</h1>
+    <h2>What would you like to do today?</h2>
+  </header>
+  <section class="add-item-section">
+    <input
+      #newItem
+      placeholder="Add a new item..."
+      (keyup.enter)="addItem(newItem.value); newItem.value=''"
+      class="new-item-input"
+      id="addItemInput"
+      autocomplete="off"
+    />
+    <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+  </section>
+  <section class="items-list-section">
+    <ul class="items-list">
+      @for (item of items; track item.description) {
+        <li class="item-row" role="listitem">
+          <label class="item-label" [attr.for]="'item-checkbox-' + item.description">
+            <input
+              type="checkbox"
+              [(ngModel)]="item.done"
+              [attr.id]="'item-checkbox-' + item.description"
+              [attr.aria-checked]="item.done"
+              [attr.aria-label]="'Mark ' + item.description + (item.done ? ' as not done' : ' as done')"
+            />
+            <span class="item-desc" [class.done]="item.done">{{item.description}}</span>
+          </label>
+        </li>
+      }
+    </ul>
+  </section>
+</div>
