@@ -1,27 +1,112 @@
-
-.visually-hidden {
-  position: absolute !important;
-  height: 1px; width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-
-/* Container */
 .home-container {
-  max-width: 500px;
+  max-width: 520px;
   margin: 40px auto;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .home-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+    margin: 16px auto;
+  }
+  .add-item-section {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .new-item-input, .btn-primary {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .filter-list {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+}
+.add-item-section .btn-primary {
+  width: auto;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+.add-item-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.new-item-input {
+  flex: 1;
+  min-width: 0;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #3182ce 0%, #63b3ed 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(49,130,206,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(90deg, #2563eb 0%, #4299e1 100%);
+  box-shadow: 0 4px 16px rgba(49,130,206,0.12);
+}
+.filter-nav {
+  margin: 1.5rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+.filter-list {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.filter-btn {
+  background: #f7fafc;
+  border: 1.5px solid #e2e8f0;
+  color: #2d3748;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  outline: none;
+}
+.filter-btn.active,
+.filter-btn:focus {
+  background: linear-gradient(90deg, #3182ce 0%, #63b3ed 100%);
+  color: #fff;
+  border-color: #3182ce;
+}
+.filter-btn:active {
+  box-shadow: 0 2px 8px rgba(49,130,206,0.08);
+}
+
+.home-container {
+  max-width: 520px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
 
-/* Header */
 .home-header h1 {
   font-size: 2.2rem;
   font-weight: 700;
@@ -35,14 +120,15 @@
   margin-bottom: 1.5rem;
 }
 
-/* Add Item Section */
 .add-item-section {
   display: flex;
+  align-items: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
 }
 .new-item-input {
   flex: 1;
+  min-width: 0;
   padding: 0.7rem 1rem;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -64,13 +150,50 @@
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(49,130,206,0.08);
   transition: background 0.2s, box-shadow 0.2s;
+  width: auto;
+  min-width: 100px;
+  flex-shrink: 0;
 }
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
   background: linear-gradient(90deg, #2563eb 0%, #4299e1 100%);
   box-shadow: 0 4px 16px rgba(49,130,206,0.12);
 }
 
-/* Items List */
+.filter-nav {
+  margin: 1.5rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+.filter-list {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.filter-btn {
+  background: #f7fafc;
+  border: 1.5px solid #e2e8f0;
+  color: #2d3748;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  outline: none;
+}
+.filter-btn.active,
+.filter-btn:focus {
+  background: linear-gradient(90deg, #3182ce 0%, #63b3ed 100%);
+  color: #fff;
+  border-color: #3182ce;
+}
+.filter-btn:active {
+  box-shadow: 0 2px 8px rgba(49,130,206,0.08);
+}
+
 .items-list {
   list-style: none;
   padding: 0;
@@ -109,4 +232,15 @@
 .item-desc.done {
   text-decoration: line-through;
   color: #a0aec0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }

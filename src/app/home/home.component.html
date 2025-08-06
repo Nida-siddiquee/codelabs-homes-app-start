@@ -15,21 +15,55 @@
     />
     <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
   </section>
+  <nav class="filter-nav" aria-label="Filter items">
+    <ul class="filter-list" role="tablist">
+      <li role="presentation">
+        <button
+          class="filter-btn"
+          [class.active]="filter === 'all'"
+          (click)="filter = 'all'"
+          role="tab"
+          [attr.aria-selected]="filter === 'all'"
+        >
+          All
+        </button>
+      </li>
+      <li role="presentation">
+        <button
+          class="filter-btn"
+          [class.active]="filter === 'active'"
+          (click)="filter = 'active'"
+          role="tab"
+          [attr.aria-selected]="filter === 'active'"
+        >
+          To Do
+        </button>
+      </li>
+      <li role="presentation">
+        <button
+          class="filter-btn"
+          [class.active]="filter === 'done'"
+          (click)="filter = 'done'"
+          role="tab"
+          [attr.aria-selected]="filter === 'done'"
+        >
+          Done
+        </button>
+      </li>
+    </ul>
+  </nav>
   <section class="items-list-section">
     <ul class="items-list">
       @for (item of items; track item.description) {
-        <li class="item-row" role="listitem">
-          <label class="item-label" [attr.for]="'item-checkbox-' + item.description">
-            <input
-              type="checkbox"
-              [(ngModel)]="item.done"
-              [attr.id]="'item-checkbox-' + item.description"
-              [attr.aria-checked]="item.done"
-              [attr.aria-label]="'Mark ' + item.description + (item.done ? ' as not done' : ' as done')"
-            />
-            <span class="item-desc" [class.done]="item.done">{{item.description}}</span>
-          </label>
-        </li>
+        @if (
+          filter === 'all' ||
+          (filter === 'active' && !item.done) ||
+          (filter === 'done' && item.done)
+        ) {
+          <li class="item-row" role="listitem">
+            <app-item (remove)="removeItem(item)" [item]="item"></app-item>
+          </li>
+        }
       }
     </ul>
   </section>

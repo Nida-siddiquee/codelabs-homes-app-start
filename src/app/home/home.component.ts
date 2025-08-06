@@ -5,13 +5,14 @@ import {
 } from "@angular/core";
 import { Item } from "./types";
 import { FormsModule } from "@angular/forms";
+import { ItemComponent } from "../item/item.component";
 
 @Component({
   standalone: true,
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, ItemComponent]
 })
 export class HomeComponent {
   componentTitle = "My To Do List";
@@ -39,5 +40,9 @@ export class HomeComponent {
       description,
       done: false
     });
+  }
+
+  removeItem(item:Item){
+    this.allItems.splice(this.allItems.indexOf(item),1)
   }
 }
